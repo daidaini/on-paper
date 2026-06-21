@@ -1,0 +1,12 @@
+---
+interface Props {
+  note?: string;
+  mark?: string;
+}
+
+const { note = '不放广告 · 不弹订阅 · 慢慢读', mark = '纸上 · on paper' } = Astro.props;
+---
+<footer class="footer">
+  <div class="mark">{mark}</div>
+  <div class="note" set:html={note}></div>
+</footer>

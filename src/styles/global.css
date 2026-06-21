@@ -1,0 +1,40 @@
+/* ============================================================
+   纸上 · 全局基线（body / footer / 共享小件）
+   ============================================================ */
+
+/* ---------- 页脚（首页 + 内页 + 关于通用） ---------- */
+.footer{
+  border-top: 1px solid var(--rule-strong);
+  padding: 26px 96px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: var(--paper);
+}
+.footer .mark{
+  font-family:"Fraunces",serif;
+  font-style:italic;
+  font-size:18px;
+  color: var(--ink-soft);
+}
+.footer .note{
+  font-family:"Inter","PingFang SC",sans-serif;
+  font-size:11px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color: var(--ink-mute);
+}
+
+/* ---------- 响应式：footer ---------- */
+@media (max-width: 1279px){
+  .footer{ padding: 24px 48px 26px; }
+}
+@media (max-width: 767px){
+  .footer{
+    padding: 20px 20px 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .footer .note{ font-size:10px; letter-spacing:0.14em; }
+}

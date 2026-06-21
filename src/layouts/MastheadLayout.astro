@@ -1,0 +1,24 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Masthead from '../components/Masthead.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  activeNav?: '文章' | '归档' | '关于' | '订阅';
+  footerNote?: string;
+}
+
+const {
+  title,
+  description,
+  activeNav = '文章',
+  footerNote = '不放广告 · 不弹订阅 · 慢慢读',
+} = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <Masthead active={activeNav} />
+  <slot />
+  <Footer note={footerNote} />
+</BaseLayout>

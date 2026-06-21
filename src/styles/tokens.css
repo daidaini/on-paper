@@ -1,0 +1,44 @@
+/* ============================================================
+   纸上 · Design Tokens & Reset
+   ============================================================ */
+
+:root{
+  --paper: #FBF8F1;        /* 奶油纸底 */
+  --paper-deep: #F5F0E6;   /* 略深纸底 */
+  --ink: #1A1A1A;          /* 近黑文字 */
+  --ink-soft: #4A463F;     /* 次级文字 */
+  --ink-mute: #8A8378;     /* 弱化文字 / metadata */
+  --rule: #E5DFD3;         /* 极淡暖灰分隔线 */
+  --rule-strong: #C9C0AE;  /* 略强分隔 */
+  --accent: #CC785C;       /* 赤陶橙 */
+  --accent-deep: #B5644A;
+  --max-w: 1440px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html,body{
+  background: var(--paper);
+  font-family: "Source Serif 4", Georgia, "Songti SC", "Noto Serif SC", serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body{
+  min-height: 100vh;
+}
+
+/* 全站容器：保持原型的 1440 上限 */
+.page{
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+}
+
+a{ color: inherit; }
+
+/* ---------- 共享排印 utility ---------- */
+.serif-display{ font-family:"Fraunces","Songti SC","Noto Serif SC",serif; }
+.sans-meta{ font-family:"Inter","PingFang SC",sans-serif; }

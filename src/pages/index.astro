@@ -1,0 +1,36 @@
+---
+import MastheadLayout from '../layouts/MastheadLayout.astro';
+import ArticleRow from '../components/ArticleRow.astro';
+import { getCollection } from 'astro:content';
+import { sortByDateDesc, toRoman } from '../lib/posts';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const posts = sortByDateDesc(allPosts).slice(0, 6);
+---
+<MastheadLayout
+  title="纸上 · on paper"
+  description="一位夜里写字的人，关于阅读、思考、时间与城市的随笔。"
+  activeNav="文章"
+  footerNote="不放广告 · 不弹订阅 · 慢慢读"
+>
+  <main class="home-body">
+    <div class="issue-marker">
+      <span class="dot"></span>
+      <span class="label">本期目录 · Contents</span>
+      <span class="line"></span>
+      <span class="date">六月 · 仲夏</span>
+    </div>
+
+    <div class="catalog-head">
+      <div class="col-no">№</div>
+      <div class="col-date">日期</div>
+      <div class="col-title">篇目</div>
+      <div class="col-cat">栏目</div>
+      <div class="col-time">阅读</div>
+    </div>
+
+    {posts.map((post, i) => (
+      <ArticleRow post={post} no={toRoman(i + 1)} />
+    ))}
+  </main>
+</MastheadLayout>

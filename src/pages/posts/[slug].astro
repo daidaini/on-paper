@@ -1,0 +1,74 @@
+---
+import InnerLayout from '../../layouts/InnerLayout.astro';
+import Pullquote from '../../components/Pullquote.astro';
+import { getCollection, render } from 'astro:content';
+import { sortByDateDesc, fmtFull, withBase } from '../../lib/posts';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const sorted = [...posts].sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  return sorted.map((post, i) => {
+    const prev = sorted[i + 1] ?? null;
+    const next = sorted[i - 1] ?? null;
+    return {
+      params: { slug: post.id },
+      props: { post, prev, next },
+    };
+  });
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  prev: CollectionEntry<'posts'> | null;
+  next: CollectionEntry<'posts'> | null;
+}
+
+const { post, prev, next } = Astro.props;
+const { Content } = await render(post);
+
+const kicker = post.data.kicker ?? `随笔 · ${post.data.category}`;
+const dateStr = fmtFull(post.data.date);
+const titleHtml = post.data.title.replace(/\n/g, '<br>');
+
+const footerNote = (() => {
+  const parts: string[] = [];
+  if (prev) parts.push(`上一篇 · <a href="${withBase(`/posts/${prev.id}/`)}" style="color:inherit;text-decoration:none;">${prev.data.title}</a>`);
+  if (next) parts.push(`下一篇 · <a href="${withBase(`/posts/${next.id}/`)}" style="color:inherit;text-decoration:none;">${next.data.title}</a>`);
+  return parts.join(' &nbsp;／&nbsp; ');
+})();
+---
+<InnerLayout
+  title={`${post.data.title} · 纸上`}
+  description={post.data.excerpt}
+  activeNav="文章"
+  backHref={withBase('/')}
+  backLabel="返回目录"
+  footerNote={footerNote || '不放广告 · 不弹订阅 · 慢慢读'}
+>
+  <div class="article-page">
+    <header class="article-head">
+      <div class="article-kicker">{kicker}</div>
+      <h1 class="article-title" set:html={titleHtml}></h1>
+      {post.data.deck && <p class="article-deck">{post.data.deck}</p>}
+      <div class="article-meta">
+        <span>纸上</span><span>{dateStr}</span><span>{post.data.readingTime}</span>
+      </div>
+    </header>
+
+    <article class="article-body">
+      <Content components={{ blockquote: Pullquote }} />
+    </article>
+
+    <div class="article-signoff">
+      <div class="byline">纸上</div>
+      <div class="byline-meta">
+        <span>{dateStr}</span><span>{post.data.readingTime}</span>
+      </div>
+    </div>
+
+    {post.data.endNote && (
+      <div class="article-end-note">—— {post.data.endNote}</div>
+    )}
+  </div>
+</InnerLayout>

@@ -1,0 +1,22 @@
+---
+import { fmtFull, withBase } from '../lib/posts';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  no: string;
+}
+
+const { post, no } = Astro.props;
+const href = withBase(`/posts/${post.id}/`);
+---
+<a href={href} class="article-row">
+  <div class="row-no">{no}</div>
+  <div class="row-date">{fmtFull(post.data.date)}</div>
+  <div class="row-title-wrap">
+    <div class="row-title">{post.data.title}</div>
+    <p class="row-excerpt">{post.data.excerpt}</p>
+  </div>
+  <div class="row-cat">{post.data.category}</div>
+  <div class="row-time">{post.data.readingTime}</div>
+</a>

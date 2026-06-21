@@ -1,0 +1,15 @@
+---
+import { cnPieceCount } from '../lib/posts';
+
+interface Props {
+  year: number;
+  count: number;
+}
+
+const { year, count } = Astro.props;
+---
+<div class="year-head">
+  <span class="year">{year}</span>
+  <span class="count">{cnPieceCount(count)}</span>
+  <span class="rule"></span>
+</div>

@@ -1,0 +1,21 @@
+---
+import { fmtMonthDay, withBase } from '../lib/posts';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  no: string;
+}
+
+const { post, no } = Astro.props;
+const href = withBase(`/posts/${post.id}/`);
+---
+<a href={href} class="archive-row" data-cat={post.data.category}>
+  <div class="ar-no">{no}</div>
+  <div class="ar-date">{fmtMonthDay(post.data.date)}</div>
+  <div class="ar-title-wrap">
+    <div class="ar-title">{post.data.title}</div>
+  </div>
+  <div class="ar-cat">{post.data.category}</div>
+  <div class="ar-time">{post.data.readingTime}</div>
+</a>

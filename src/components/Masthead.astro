@@ -1,0 +1,33 @@
+---
+import { withBase } from '../lib/posts';
+
+interface Props {
+  active?: '文章' | '归档' | '关于' | '订阅';
+}
+
+const { active = '文章' } = Astro.props;
+
+const navs: { label: string; href: string }[] = [
+  { label: '文章', href: withBase('/') },
+  { label: '归档', href: withBase('/archive/') },
+  { label: '关于', href: withBase('/about/') },
+  { label: '订阅', href: '#' },
+];
+
+const home = withBase('/');
+---
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="masthead-meta-left">第 二十四 期 · 二〇二六</div>
+    <div class="masthead-meta-right">Vol.&nbsp;XXIV &nbsp;·&nbsp; 夏</div>
+  </div>
+  <div class="masthead-title">
+    <h1><a href={home} style="text-decoration:none;color:inherit;">纸&nbsp;上</a></h1>
+    <div class="subtitle">一位夜里写字的人，关于阅读、思考、时间与城市的随笔</div>
+  </div>
+  <nav class="masthead-nav">
+    {navs.map((n) => (
+      <a href={n.href} class={n.label === active ? 'active' : ''}>{n.label}</a>
+    ))}
+  </nav>
+</header>

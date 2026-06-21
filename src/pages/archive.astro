@@ -1,0 +1,48 @@
+---
+import MastheadLayout from '../layouts/MastheadLayout.astro';
+import ArchiveRow from '../components/ArchiveRow.astro';
+import YearHead from '../components/YearHead.astro';
+import CatFilter from '../components/CatFilter.astro';
+import { getCollection } from 'astro:content';
+import { sortByDateDesc, groupByYear, countByCat, toRoman } from '../lib/posts';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const sorted = sortByDateDesc(allPosts);
+const grouped = groupByYear(sorted);
+
+const counts = countByCat(sorted);
+const categories: { name: string; count: number }[] = ['阅读', '城市', '时间', '写作']
+  .map((name) => ({ name, count: counts[name] || 0 }))
+  .filter((c) => c.count > 0);
+
+// 用全局序号（按日期倒序的位置），保证罗马数字稳定
+const indexById = new Map<string, number>();
+sorted.forEach((p, i) => indexById.set(p.id, i + 1));
+
+const startYear = sorted.length ? sorted[sorted.length - 1].data.date.getFullYear() : new Date().getFullYear();
+const startYearCn = `二〇${['二五', '二六', '二七', '二八', '二九', '三〇'][startYear - 2025] ?? String(startYear)}`;
+---
+<MastheadLayout
+  title="全部存档 · 纸上"
+  description="纸上 · 全部文章存档"
+  activeNav="归档"
+  footerNote="不放广告 · 不弹订阅 · 慢慢读"
+>
+  <main class="archive-body">
+    <div class="archive-head">
+      <div class="title">全部存档</div>
+      <div class="meta">Archive · 共 {sorted.length} 篇 · 始于 {startYearCn}</div>
+    </div>
+
+    <CatFilter categories={categories} total={sorted.length} />
+
+    {grouped.map(([year, items]) => (
+      <section data-year-block>
+        <YearHead year={year} count={items.length} />
+        {items.map((post) => (
+          <ArchiveRow post={post} no={toRoman(indexById.get(post.id)!)} />
+        ))}
+      </section>
+    ))}
+  </main>
+</MastheadLayout>
