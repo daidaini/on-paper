@@ -46,7 +46,7 @@ npm run preview    # 本地预览 dist
 ---
 title: 标题（如需换行用 \n）
 date: 2026-06-12
-category: 阅读        # 阅读 | 城市 | 时间 | 写作
+category: 阅读        # 阅读 | 生活 | 时间 | 写作
 readingTime: 约 12 分钟
 excerpt: 一句话摘要，会显示在首页与归档。
 deck: 详情页副标（斜体，可选）
