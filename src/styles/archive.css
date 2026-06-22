@@ -1,180 +1,249 @@
 /* ============================================================
    纸上 · 归档 · 分类页
    ============================================================ */
-.archive-body{ padding: 0 96px 64px; }
+.archive-body {
+    padding: 0 96px 64px;
+}
 
-.archive-head{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  padding: 48px 0 22px;
-  border-bottom: 2px solid var(--ink);
+.archive-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 48px 0 22px;
+    border-bottom: 2px solid var(--ink);
 }
-.archive-head .title{
-  font-family:"Fraunces","Songti SC","Noto Serif SC",serif;
-  font-weight:400;
-  font-size: 52px;
-  line-height:1;
-  letter-spacing:0.02em;
-  color: var(--ink);
-  font-variation-settings: "opsz" 144;
+.archive-head .title {
+    font-family: "Fraunces", "Songti SC", "Noto Serif SC", serif;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
 }
-.archive-head .meta{
-  font-family:"Inter","PingFang SC",sans-serif;
-  font-size:11px;
-  letter-spacing:0.24em;
-  text-transform:uppercase;
-  color: var(--ink-mute);
-  font-weight:500;
+.archive-head .meta {
+    font-family: "Inter", "PingFang SC", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
 }
 
 /* 分类筛选条 */
-.cat-filter{
-  display:flex;
-  align-items:baseline;
-  gap: 34px;
-  padding: 26px 0 30px;
-  border-bottom: 1px solid var(--rule);
-  flex-wrap:wrap;
+.cat-filter {
+    display: flex;
+    align-items: baseline;
+    gap: 34px;
+    padding: 26px 0 30px;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
 }
-.cat-filter .cat{
-  font-family:"Inter","PingFang SC",sans-serif;
-  font-size:12px;
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  color: var(--ink-soft);
-  text-decoration:none;
-  font-weight:500;
-  padding-bottom:4px;
-  border-bottom: 1px solid transparent;
-  transition: color .2s ease, border-color .2s ease;
-  white-space:nowrap;
-  cursor: pointer;
+.cat-filter .cat {
+    font-family: "Inter", "PingFang SC", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+    white-space: nowrap;
+    cursor: pointer;
 }
-.cat-filter .cat .count{
-  font-size:10px;
-  letter-spacing:0.1em;
-  color: var(--ink-mute);
-  margin-left:8px;
-  font-weight:400;
+.cat-filter .cat .count {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    margin-left: 8px;
+    font-weight: 400;
 }
-.cat-filter .cat:hover{ color: var(--accent-deep); }
-.cat-filter .cat.active{
-  color: var(--accent);
-  border-bottom: 1px solid var(--accent);
+.cat-filter .cat:hover {
+    color: var(--accent-deep);
 }
-.cat-filter .cat.active .count{ color: var(--accent); opacity:0.75; }
+.cat-filter .cat.active {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+.cat-filter .cat.active .count {
+    color: var(--accent);
+    opacity: 0.75;
+}
 
 /* 年份分组 */
-.year-head{
-  display:flex;
-  align-items:baseline;
-  gap: 22px;
-  padding: 46px 0 18px;
+.year-head {
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    padding: 46px 0 18px;
 }
-.year-head .year{
-  font-family:"Fraunces","Songti SC","Noto Serif SC",serif;
-  font-weight:400;
-  font-size: 44px;
-  line-height:1;
-  color: var(--ink);
-  letter-spacing:0.01em;
-  font-variation-settings: "opsz" 144;
+.year-head .year {
+    font-family: "Fraunces", "Songti SC", "Noto Serif SC", serif;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+    font-variation-settings: "opsz" 144;
 }
-.year-head .count{
-  font-family:"Source Serif 4", Georgia, serif;
-  font-style:italic;
-  font-size:16px;
-  color: var(--accent);
+.year-head .count {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--accent);
 }
-.year-head .rule{
-  flex:1; height:1px; background: var(--rule);
+.year-head .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
 }
 
 /* 归档条目 */
-.archive-row{
-  display:flex;
-  align-items:baseline;
-  gap:0;
-  padding: 18px 0 19px;
-  border-bottom: 1px solid var(--rule);
-  cursor:pointer;
-  text-decoration:none;
-  color: inherit;
+.archive-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    padding: 18px 0 19px;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
-.archive-row:last-child{ border-bottom:none; }
-.archive-row:hover .ar-title{ color: var(--accent-deep); }
-.ar-no{
-  width:64px;
-  font-family:"Fraunces",serif;
-  font-style:italic;
-  font-weight:300;
-  font-size:17px;
-  color: var(--accent);
-  letter-spacing:0.02em;
+.archive-row:last-child {
+    border-bottom: none;
 }
-.ar-date{
-  width:110px;
-  font-family:"Inter","PingFang SC",sans-serif;
-  font-size:12px;
-  letter-spacing:0.08em;
-  color: var(--ink-mute);
-  font-weight:400;
-  font-variant-numeric: tabular-nums;
+.archive-row:hover .ar-title {
+    color: var(--accent-deep);
 }
-.ar-title-wrap{ flex:1; padding-right:24px; }
-.ar-title{
-  font-family:"Fraunces","Songti SC","Noto Serif SC",serif;
-  font-weight:400;
-  font-size:22px;
-  line-height:1.3;
-  color: var(--ink);
-  letter-spacing:0.003em;
-  transition: color .2s ease;
-  font-variation-settings: "opsz" 48;
+.ar-no {
+    width: 64px;
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    color: var(--accent);
+    letter-spacing: 0.02em;
 }
-.ar-cat{
-  width:120px;
-  text-align:center;
-  font-family:"Source Serif 4", Georgia, serif;
-  font-style:italic;
-  font-size:14px;
-  color: var(--accent);
+.ar-date {
+    width: 110px;
+    font-family: "Inter", "PingFang SC", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
 }
-.ar-time{
-  width:110px;
-  text-align:right;
-  font-family:"Inter","PingFang SC",sans-serif;
-  font-size:11.5px;
-  letter-spacing:0.06em;
-  color: var(--ink-mute);
-  font-variant-numeric: tabular-nums;
+.ar-title-wrap {
+    flex: 1;
+    padding-right: 24px;
+}
+.ar-title {
+    font-family: "Fraunces", "Songti SC", "Noto Serif SC", serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--ink);
+    letter-spacing: 0.003em;
+    transition: color 0.2s ease;
+    font-variation-settings: "opsz" 48;
+}
+.ar-cat {
+    width: 120px;
+    text-align: center;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent);
+}
+.ar-time {
+    width: 110px;
+    text-align: right;
+    font-family: "Inter", "PingFang SC", sans-serif;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
 }
 
 /* ---------- 响应式 ---------- */
-@media (max-width: 1279px){
-  .archive-body{ padding: 0 48px 56px; }
-  .archive-head .title{ font-size: 42px; }
-  .ar-cat, .ar-time{ display:none; }
-  .ar-title-wrap{ padding-right: 0; }
+@media (max-width: 1279px) {
+    .archive-body {
+        padding: 0 48px 56px;
+    }
+    .archive-head .title {
+        font-size: 42px;
+    }
+    .ar-cat,
+    .ar-time {
+        display: none;
+    }
+    .ar-title-wrap {
+        padding-right: 0;
+    }
 }
 
-@media (max-width: 767px){
-  .archive-body{ padding: 0 20px 40px; }
-  .archive-head{ padding: 32px 0 18px; flex-direction: column; align-items: flex-start; gap: 8px; }
-  .archive-head .title{ font-size: 34px; }
-  .archive-head .meta{ font-size:10.5px; letter-spacing:0.18em; }
+@media (max-width: 767px) {
+    .archive-body {
+        padding: 0 20px 40px;
+    }
+    .archive-head {
+        padding: 32px 0 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .archive-head .title {
+        font-size: 34px;
+    }
+    .archive-head .meta {
+        font-size: 10.5px;
+        letter-spacing: 0.18em;
+    }
 
-  .cat-filter{ gap: 18px; padding: 18px 0 22px; }
-  .cat-filter .cat{ font-size:11px; letter-spacing:0.18em; }
+    .cat-filter {
+        gap: 18px;
+        padding: 18px 0 22px;
+    }
+    .cat-filter .cat {
+        font-size: 13px;
+        letter-spacing: 0.14em;
+    }
 
-  .year-head{ gap: 14px; padding: 32px 0 14px; }
-  .year-head .year{ font-size: 32px; }
-  .year-head .count{ font-size:14px; }
+    .year-head {
+        gap: 14px;
+        padding: 32px 0 14px;
+    }
+    .year-head .year {
+        font-size: 32px;
+    }
+    .year-head .count {
+        font-size: 14px;
+    }
 
-  .archive-row{ flex-wrap: wrap; padding: 14px 0 15px; }
-  .ar-no{ width:auto; margin-right: 14px; font-size:15px; }
-  .ar-date{ width:auto; margin-right: 14px; }
-  .ar-title-wrap{ width:100%; padding-top: 4px; }
-  .ar-title{ font-size: 18px; }
+    .archive-row {
+        flex-wrap: wrap;
+        padding: 14px 0 15px;
+    }
+    .ar-no {
+        width: auto;
+        margin-right: 14px;
+        font-size: 15px;
+    }
+    .ar-date {
+        width: auto;
+        margin-right: 14px;
+    }
+    .ar-title-wrap {
+        width: 100%;
+        padding-top: 4px;
+    }
+    .ar-title {
+        font-size: 18px;
+    }
 }
