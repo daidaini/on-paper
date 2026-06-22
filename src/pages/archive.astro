@@ -11,7 +11,7 @@ const sorted = sortByDateDesc(allPosts);
 const grouped = groupByYear(sorted);
 
 const counts = countByCat(sorted);
-const categories: { name: string; count: number }[] = ['阅读', '城市', '时间', '写作']
+const categories: { name: string; count: number }[] = ['阅读', '城市', '时间', '写作', '工作', '生活', '其他', '文化']
   .map((name) => ({ name, count: counts[name] || 0 }))
   .filter((c) => c.count > 0);
 
