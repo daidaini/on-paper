@@ -10,7 +10,7 @@ const { Content } = await render(entry);
 const d = entry.data;
 ---
 <InnerLayout
-  title={`${d.title} · 纸上`}
+  title={`${d.title} · 纸上生活`}
   description={d.epigraph}
   activeNav="关于"
   backHref={withBase('/')}
@@ -32,7 +32,7 @@ const d = entry.data;
     </article>
 
     <div class="article-signoff">
-      <div class="byline">{d.signoffLeft ?? '纸上'}</div>
+      <div class="byline">{d.signoffLeft ?? '纸上生活'}</div>
       <div class="byline-meta">
         {d.signoffRightA && <span>{d.signoffRightA}</span>}
         {d.signoffRightB && <span>{d.signoffRightB}</span>}

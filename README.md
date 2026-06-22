@@ -1,6 +1,6 @@
-# 纸上 · on paper
+# 纸上生活 · life on paper
 
-「纸上」是一份按 `blog-prototype/design-demos/02-warm-press.html` 1:1 复刻的静态博客，
+「纸上生活」是一份静态博客，
 参照 Stripe Press × The Paris Review 的「出版物」气质 ——
 奶油纸底 + 三字体（Fraunces / Source Serif 4 / Inter）+ 单一赤陶橙点缀。
 

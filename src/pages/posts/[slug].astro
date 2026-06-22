@@ -39,7 +39,7 @@ const footerNote = (() => {
 })();
 ---
 <InnerLayout
-  title={`${post.data.title} · 纸上`}
+  title={`${post.data.title} · 纸上生活`}
   description={post.data.excerpt}
   activeNav="文章"
   backHref={withBase('/')}
@@ -52,7 +52,7 @@ const footerNote = (() => {
       <h1 class="article-title" set:html={titleHtml}></h1>
       {post.data.deck && <p class="article-deck">{post.data.deck}</p>}
       <div class="article-meta">
-        <span>纸上</span><span>{dateStr}</span><span>{post.data.readingTime}</span>
+        <span>纸上生活</span><span>{dateStr}</span><span>{post.data.readingTime}</span>
       </div>
     </header>
 
@@ -61,7 +61,7 @@ const footerNote = (() => {
     </article>
 
     <div class="article-signoff">
-      <div class="byline">纸上</div>
+      <div class="byline">纸上生活</div>
       <div class="byline-meta">
         <span>{dateStr}</span><span>{post.data.readingTime}</span>
       </div>

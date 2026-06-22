@@ -8,7 +8,7 @@ const allPosts = await getCollection('posts', ({ data }) => !data.draft);
 const posts = sortByDateDesc(allPosts).slice(0, 6);
 ---
 <MastheadLayout
-  title="纸上 · on paper"
+  title="纸上生活 · life on paper"
   description="一位夜里写字的人，关于阅读、思考、时间与城市的随笔。"
   activeNav="文章"
   footerNote="不放广告 · 不弹订阅 · 慢慢读"
