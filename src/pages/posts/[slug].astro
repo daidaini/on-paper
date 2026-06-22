@@ -2,7 +2,7 @@
 import InnerLayout from '../../layouts/InnerLayout.astro';
 import Pullquote from '../../components/Pullquote.astro';
 import { getCollection, render } from 'astro:content';
-import { sortByDateDesc, fmtFull, withBase } from '../../lib/posts';
+import { fmtFull, withBase } from '../../lib/posts';
 import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -57,7 +57,7 @@ const footerNote = (() => {
     </header>
 
     <article class="article-body">
-      <Content components={{ blockquote: Pullquote }} />
+      <Content components={{ Pullquote }} />
     </article>
 
     <div class="article-signoff">
